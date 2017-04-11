@@ -1,6 +1,6 @@
-#PA-Static.
+# PA-Static.
 * `nvm install stable`
 * `nvm use stable`
 * `npm install`
-* `bower install bootstrap`
+* `bower install`
 * `npm start`
