@@ -20,11 +20,18 @@ app.set('view engine', 'handlebars');
 app.use('/vendor', express.static(path.join(__dirname, 'bower_components')));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
+//routes
+
+var Project = require("./app/project/Project");
+
+app.use("/project", Project);
+
 app.get("/", function (req, res) {
 
 	res.render("home", {body: "hello"});
 
 });
+
 
 //let's start this thing!
 app.set('port', process.env.PORT || 5000);
