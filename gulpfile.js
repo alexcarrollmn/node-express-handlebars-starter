@@ -9,10 +9,10 @@ gulp.task('styles', function() {
 });
 
 gulp.task('default',function() {
-	exec('node app.js', function (err, stdout, stderr) {
+	/*exec('node app.js', function (err, stdout, stderr) {
 		console.log(stdout);
 		console.log(stderr);
 		cb(err);
-	});
+	});*/
 	gulp.watch('./src/scss/**/*.scss',['styles']);
 });

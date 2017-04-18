@@ -6,8 +6,16 @@
     <link rel="stylesheet" media="all" href="/public/css/main.css">
 </head>
 <body>
-	{{> nav }}
+    <div class="container-fluid">
+        {{> header }}
+        
+        {{> sidenav }}
 
-    {{{body}}}
+        {{{ body }}}
+
+        {{> footer }}
+    </div>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
 </body>
 </html>
