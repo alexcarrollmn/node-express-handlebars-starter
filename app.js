@@ -1,8 +1,12 @@
 const express = require('express'),
 	  exphbs  = require('express-handlebars'),
-	  path = require('path');
+	  path = require('path'),
+      cookieParser = require('cookie-parser'),
+      bodyParser = require('body-parser');
 
 var app = express();
+
+
 
 //how about some templating setup?
 var hbs = exphbs.create({
@@ -13,6 +17,10 @@ var hbs = exphbs.create({
 });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 //give me some static paths!
 app.use('/vendor', express.static(path.join(__dirname, 'bower_components')));
