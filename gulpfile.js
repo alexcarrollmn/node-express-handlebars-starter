@@ -3,6 +3,22 @@ var sass = require("gulp-sass");
 var exec = require('child_process').exec;
 var svgSprite = require('gulp-svg-sprite');
 
+// SVG Config
+var config = {
+  mode: {
+    symbol: { // symbol mode to build the SVG
+      render: {
+        css: false, // CSS output option for icon sizing
+        scss: false // SCSS output option for icon sizing
+      },
+      dest: 'sprite', // destination folder
+      prefix: '.svg--%s', // BEM-style prefix if styles rendered
+      sprite: 'sprite.svg', //generated sprite name
+      example: true // Build a sample page, please!
+    }
+  }
+}
+
 gulp.task('styles', function() {
 	console.log('style change');
 	gulp.src('./src/scss/**/*.scss')
@@ -21,24 +37,9 @@ gulp.task('default', ['svg', 'styles'], function() {
 });
 gulp.task('svg', function(){
 	console.log("svg change");
-	gulp.src('**/*.svg', {cwd: './src/img/**/*.svg'})
+	gulp.src('**/*.svg', {cwd: 'src/**/*'})
 		.pipe(svgSprite(config))
-		.pipe(gulp.dest('./public/img'));
+		.pipe(gulp.dest('public/img'));
 })
 
 
-// SVG Config
-var config = {
-  mode: {
-    symbol: { // symbol mode to build the SVG
-      render: {
-        css: false, // CSS output option for icon sizing
-        scss: false // SCSS output option for icon sizing
-      },
-      dest: '/sprite', // destination folder
-      prefix: '.svg--%s', // BEM-style prefix if styles rendered
-      sprite: 'sprite.svg', //generated sprite name
-      example: true // Build a sample page, please!
-    }
-  }
-}
